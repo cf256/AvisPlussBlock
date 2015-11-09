@@ -1,6 +1,5 @@
-//amedia am style
-//TODO make into one insertion
-var articleEntryArray= ["http://www.ammta.no/"];
+/*	Websites with the Amedia Am Style 	*/
+var articleEntryArray= ["http://www.amta.no/"];
 articleEntryArray.push("http://www.retten.no/");
 articleEntryArray.push("http://www.auraavis.no/");
 articleEntryArray.push("http://www.austagderblad.no/");
@@ -39,8 +38,7 @@ articleEntryArray.push("http://www.tvedestrandsposten.no/");
 articleEntryArray.push("http://www.vestbyavis.no/");
 articleEntryArray.push("http://www.aasavis.no/");
 
-// amedia df style:
-// one insertion
+/*	Websites with the Amedia DfskinpaywallStyle*/
 var dfSkinPaywall = ["http://www.ba.no/"];
 dfSkinPaywall.push("http://www.dt.no/");
 dfSkinPaywall.push("http://www.ifinnmark.no/");
@@ -61,87 +59,96 @@ dfSkinPaywall.push("http://www.tb.no/");
 dfSkinPaywall.push("http://www.oblad.no/");
 dfSkinPaywall.push("http://www.op.no/");
 dfSkinPaywall.push("http://www.ostlendingen.no/");
-
+//TODO "for abbonnementer" df+skin published? fanaposten closed sunnhordaland special
 var url = document.URL;
+var hits = 0;
+
+/*	BT/Aftenbladet/Fedrelandsvennen	*/
 if(url.indexOf("bt.no") >= 0 || url.indexOf("aftenbladet.no") >= 0 || url.indexOf("fvn.no") >= 0){ 
-	console.log("in bt/aftenbladet");
 	var divs = document.getElementsByClassName("df-skin-paywall-closed");
 	for(var i = 0; i < divs.length; i++){
-		divs[i].style.display = 'none';
-		console.log("hit");
+		divs[i].classList.add("blocked");
 	}
+	/*	VG 	*/
 } else if(url.indexOf("vg.no") >= 0) {
-	console.log("in VG");
 	var divs = document.getElementsByClassName("article-extract");
 	for(var i = 0; i < divs.length; i++) {
 		if (divs[i].hasChildNodes()) {
 			var spans = divs[i].querySelectorAll("span");
 			for(var j = 0; j < spans.length; j++) {
 				if(spans[j].classList.contains("df-img-skin-pluss")){
-					divs[i].style.display = 'none';
-					console.log("hit");
+					divs[i].classList.add("blocked");
 				}
 			}
 		}
 	}
 	var vgPlussTeaser = document.getElementById("pluss-teaser");
-	vgPlussTeaser.style.display = 'none';
+	vgPlussTeaser.classList.add("blocked");
+	/*	Dagbladet 	*/
 } else if (url.indexOf("dagbladet.no") >= 0) {
-	console.log("in DB");
 	var articles = document.getElementsByClassName("preview");
 	for(var i = 0; i < articles.length; i++) {
 		if (articles[i].hasChildNodes()) {
 			var child = articles[i].children[0];
 			var href = child.getAttribute("href");
 			if (href.indexOf("/pluss/") >= 0) {
-				articles[i].style.display = 'none';
-				console.log("hit");
+				articles[i].classList.add("blocked");
 			}
 		}
 	}
+	/*	Aftenposten 	*/
 } else if (url.indexOf("aftenposten.no") >= 0) {
-	console.log("in AP");
 	var divs = document.getElementsByClassName("df-skin-art-Feat-Amagasinet");
 	for(var i = 0; i < divs.length; i++){
-		divs[i].style.display = 'none';
-		console.log("hit");
+		divs[i].classList.add("blocked");
 	}
+	/*	Dagens Naeringsliv	*/
 } else if (url.indexOf("dn.no") >= 0) {
-	//todo d2
-	console.log("in DN");
+	if (url.indexOf("/d2/")) {
+		var articles = document.querySelectorAll("article");
+		if (undefined !== articles) {
+			for (var i = 0; i < articles.length; i++) {
+				if(articles[i].hasChildNodes()){
+					var child = articles[i].children[0].children[0].children[0];
+					if (hasClass(child, "paid-article")) {
+						articles[i].classList.add("blocked");
+					}
+				}
+			}
+		}
+	}
 	var divs = document.getElementsByClassName("df-skin-paid");
 	for(var i = 0; i < divs.length; i++){
-		divs[i].style.display = 'none';
-		console.log("hit");
-	}	
+		divs[i].classList.add("blocked");
+	}
+/*	Adressa 	*/	
 } else if (url.indexOf("adressa.no") >= 0) {
-	console.log("in adressa");
 	var divs = document.getElementsByClassName("article payed");
 	for(var i = 0; i < divs.length; i++) {
-		divs[i].style.display = 'none';
-		console.log("hits");
+		divs[i].classList.add("blocked");
 	}
+	/*	part of articleEntryArray	*/
 } else if (articleEntryArray.indexOf(url) != -1){
-	console.log("am-articleEntry");
 	var divs = document.getElementsByClassName("am-articleEntry");
 	for(var i = 0; i < divs.length; i++) {
 		if (divs[i].hasChildNodes()) {
 			var spans = divs[i].querySelectorAll("span");
 			for(var j = 0; j < spans.length; j++) {
 				if(spans[j].classList.contains("am-premium-logo")){
-					divs[i].style.display = 'none';
-					console.log("hit");
+					divs[i].classList.add("blocked");	
 				}
 			}
 		}
 	}
+	/*	Part of dfSkinPaywallArray	*/
 } else if (dfSkinPaywall.indexOf(url) != -1){
-	console.log("dfSkinPaywall");
 	var divs = document.getElementsByClassName("df-skin-paywall");
 	for(var i = 0; i < divs.length; i++){
-		divs[i].style.display = 'none';
-		console.log("hit");
+		divs[i].classList.add("blocked");
 	}
-} else {
-	console.log(url + "NO HIT	");
+}
+
+/*  Checks if an element has a specific class 	*/
+function hasClass(element, cls) {
+    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 }

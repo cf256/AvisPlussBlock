@@ -61,7 +61,6 @@ dfSkinPaywall.push("http://www.op.no/");
 dfSkinPaywall.push("http://www.ostlendingen.no/");
 //TODO "for abbonnementer" df+skin published? fanaposten closed sunnhordaland special
 var url = document.URL;
-var hits = 0;
 
 /*	BT/Aftenbladet/Fedrelandsvennen	*/
 if(url.indexOf("bt.no") >= 0 || url.indexOf("aftenbladet.no") >= 0 || url.indexOf("fvn.no") >= 0){ 

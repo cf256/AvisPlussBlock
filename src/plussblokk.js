@@ -63,17 +63,15 @@ var dfSkinPaywall = [
 	"http://www.op.no/",
 	"http://www.ostlendingen.no/",
 ];
-//TODO "for abbonnementer" df+skin published? fanaposten closed sunnhordaland special
 var url = document.URL;
-
-/*	BT/Aftenbladet/Fedrelandsvennen	*/
-if(url.indexOf("bt.no") >= 0 || url.indexOf("aftenbladet.no") >= 0 || url.indexOf("fvn.no") >= 0){ 
+hits = 0;
+if(isBt() || isAftenbladet() || isFvn()){ 
 	var divs = document.getElementsByClassName("df-skin-paywall-closed");
 	for(var i = 0; i < divs.length; i++){
 		divs[i].classList.add("blocked");
+		hits++;
 	}
-	/*	VG 	*/
-} else if(url.indexOf("vg.no") >= 0) {
+} else if(isVg()) {
 	var divs = document.getElementsByClassName("article-extract");
 	for(var i = 0; i < divs.length; i++) {
 		if (divs[i].hasChildNodes()) {
@@ -81,14 +79,15 @@ if(url.indexOf("bt.no") >= 0 || url.indexOf("aftenbladet.no") >= 0 || url.indexO
 			for(var j = 0; j < spans.length; j++) {
 				if(spans[j].classList.contains("df-img-skin-pluss")){
 					divs[i].classList.add("blocked");
+					hits++;
 				}
 			}
 		}
 	}
 	var vgPlussTeaser = document.getElementById("pluss-teaser");
 	vgPlussTeaser.classList.add("blocked");
-	/*	Dagbladet 	*/
-} else if (url.indexOf("dagbladet.no") >= 0) {
+	hits++;
+} else if (isDb()) {
 	var articles = document.getElementsByClassName("preview");
 	for(var i = 0; i < articles.length; i++) {
 		if (articles[i].hasChildNodes()) {
@@ -96,17 +95,17 @@ if(url.indexOf("bt.no") >= 0 || url.indexOf("aftenbladet.no") >= 0 || url.indexO
 			var href = child.getAttribute("href");
 			if (href.indexOf("/pluss/") >= 0) {
 				articles[i].classList.add("blocked");
+				hits++;
 			}
 		}
 	}
-	/*	Aftenposten 	*/
-} else if (url.indexOf("aftenposten.no") >= 0) {
+} else if (isAp()) {
 	var divs = document.getElementsByClassName("df-skin-art-Feat-Amagasinet");
 	for(var i = 0; i < divs.length; i++){
 		divs[i].classList.add("blocked");
+		hits++;
 	}
-	/*	Dagens Naeringsliv	*/
-} else if (url.indexOf("dn.no") >= 0) {
+} else if (isDn()) {
 	if (url.indexOf("/d2/")) {
 		var articles = document.querySelectorAll("article");
 		if (undefined !== articles) {
@@ -115,6 +114,7 @@ if(url.indexOf("bt.no") >= 0 || url.indexOf("aftenbladet.no") >= 0 || url.indexO
 					var child = articles[i].children[0].children[0].children[0];
 					if (hasClass(child, "paid-article")) {
 						articles[i].classList.add("blocked");
+						hits++;
 					}
 				}
 			}
@@ -123,31 +123,32 @@ if(url.indexOf("bt.no") >= 0 || url.indexOf("aftenbladet.no") >= 0 || url.indexO
 	var divs = document.getElementsByClassName("df-skin-paid");
 	for(var i = 0; i < divs.length; i++){
 		divs[i].classList.add("blocked");
+		hits++;
 	}
-/*	Adressa 	*/	
-} else if (url.indexOf("adressa.no") >= 0) {
+} else if (isAdressa()) {
 	var divs = document.getElementsByClassName("article payed");
 	for(var i = 0; i < divs.length; i++) {
 		divs[i].classList.add("blocked");
+		hits++;
 	}
-	/*	part of articleEntryArray	*/
-} else if (articleEntryArray.indexOf(url) != -1){
+} else if (isPartOfArticleArray()){
 	var divs = document.getElementsByClassName("am-articleEntry");
 	for(var i = 0; i < divs.length; i++) {
 		if (divs[i].hasChildNodes()) {
 			var spans = divs[i].querySelectorAll("span");
 			for(var j = 0; j < spans.length; j++) {
 				if(spans[j].classList.contains("am-premium-logo")){
-					divs[i].classList.add("blocked");	
+					divs[i].classList.add("blocked");
+					hits++;	
 				}
 			}
 		}
 	}
-	/*	Part of dfSkinPaywallArray	*/
-} else if (dfSkinPaywall.indexOf(url) != -1){
+} else if (isPartOfDfSkinPaywallArray()){
 	var divs = document.getElementsByClassName("df-skin-paywall");
 	for(var i = 0; i < divs.length; i++){
 		divs[i].classList.add("blocked");
+		hits++;
 	}
 }
 
@@ -155,3 +156,35 @@ if(url.indexOf("bt.no") >= 0 || url.indexOf("aftenbladet.no") >= 0 || url.indexO
 function hasClass(element, cls) {
     return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 }
+/* bool functions to increase readability */
+function isVg() { return url.indexOf("vg.no") >= 0;}
+function isAdressa() {return url.indexOf("adressa.no") >= 0;}
+function isBt() { return url.indexOf("bt.no") >= 0;}
+function isAp() {return url.indexOf("aftenposten.no") >= 0;}
+function isFvn() {return url.indexOf("fvn.no") >= 0;}
+function isAftenbladet() {return url.indexOf("aftenbladet.no") >= 0;}
+function isDb() {return url.indexOf("dagbladet.no") >= 0;}
+function isDn() {return url.indexOf("dn.no") >= 0;}
+function isPartOfArticleArray() {return articleEntryArray.indexOf(url) >= 0;}
+function isPartOfDfSkinPaywallArray() {return dfSkinPaywall.indexOf(url) >= 0;}
+
+/* Inform background page that this tab should have a page action 
+*  I.e. it is one of the websites we check... 
+*/
+chrome.runtime.sendMessage({
+  from:    'content',
+  subject: 'showPageAction'
+});
+
+/* Listen for messages from the popup */
+chrome.runtime.onMessage.addListener(function (msg, sender, response) {
+  // First, validate the message's structure
+  if ((msg.from === 'popup') && (msg.subject === 'HitsInfo')) {
+    var res = {
+    	noHits: hits
+    };
+    // send response to the popup
+    response(res);
+  }
+});
+

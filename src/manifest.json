@@ -72,7 +72,8 @@
                 "*://*.vg.no/*",
                 "*://*.dagbladet.no/*",
                 "*://*.dn.no/*",
-                "*://*.adressa.no/*"
+                "*://*.adressa.no/*",
+                "*://*.aftenposten.no/*"
               ],
     "js": ["plussblokk.js"],
     "css": ["remove.css"]

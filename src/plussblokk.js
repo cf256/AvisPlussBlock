@@ -1,64 +1,68 @@
 /*	Websites with the Amedia Am Style 	*/
-var articleEntryArray= ["http://www.amta.no/"];
-articleEntryArray.push("http://www.retten.no/");
-articleEntryArray.push("http://www.auraavis.no/");
-articleEntryArray.push("http://www.austagderblad.no/");
-articleEntryArray.push("http://www.nordhordland.no/");
-articleEntryArray.push("http://www.an.no/");
-articleEntryArray.push("http://www.bygdeposten.no/");
-articleEntryArray.push("http://www.eikerbladet.no/");
-articleEntryArray.push("http://www.enebakkavis.no/");
-articleEntryArray.push("http://www.firda.no/");
-articleEntryArray.push("http://www.firdaposten.no/");
-articleEntryArray.push("http://www.fremover.no/");
-articleEntryArray.push("http://www.hadeland.no/");
-articleEntryArray.push("http://www.hardanger-folkeblad.no/");
-articleEntryArray.push("http://www.helg.no/");
-articleEntryArray.push("http://www.indre.no/");
-articleEntryArray.push("http://www.kv.no/");
-articleEntryArray.push("http://www.kvinnheringen.no/");
-articleEntryArray.push("http://www.laagendalsposten.no/");
-articleEntryArray.push("http://www.lierposten.no/");
-articleEntryArray.push("http://www.lofotposten.no/");
-articleEntryArray.push("http://www.lofot-tidende.no/");
-articleEntryArray.push("http://www.oyene.no/");
-articleEntryArray.push("http://www.noblad.no/");
-articleEntryArray.push("http://www.pd.no/");
-articleEntryArray.push("http://www.r-a.no/");
-articleEntryArray.push("http://www.ranablad.no/");
-articleEntryArray.push("http://www.ringblad.no/");
-articleEntryArray.push("http://www.ringsaker-blad.no/");
-articleEntryArray.push("http://www.rha.no/");
-articleEntryArray.push("http://www.sandeavis.no/");
-articleEntryArray.push("http://www.smaalenene.no/");
-articleEntryArray.push("http://www.svelvikposten.no/");
-articleEntryArray.push("http://www.telen.no/");
-articleEntryArray.push("http://www.tk.no/");
-articleEntryArray.push("http://www.tvedestrandsposten.no/");
-articleEntryArray.push("http://www.vestbyavis.no/");
-articleEntryArray.push("http://www.aasavis.no/");
+var articleEntryArray= [
+	"http://www.amta.no/",
+	"http://www.retten.no/",
+	"http://www.auraavis.no/",
+	"http://www.austagderblad.no/",
+	"http://www.nordhordland.no/",
+	"http://www.an.no/",
+	"http://www.bygdeposten.no/",
+	"http://www.eikerbladet.no/",
+	"http://www.enebakkavis.no/",
+	"http://www.firda.no/",
+	"http://www.firdaposten.no/",
+	"http://www.fremover.no/",
+	"http://www.hadeland.no/",
+	"http://www.hardanger-folkeblad.no/",
+	"http://www.helg.no/",
+	"http://www.indre.no/",
+	"http://www.kv.no/",
+	"http://www.kvinnheringen.no/",
+	"http://www.laagendalsposten.no/",
+	"http://www.lierposten.no/",
+	"http://www.lofotposten.no/",
+	"http://www.lofot-tidende.no/",
+	"http://www.oyene.no/",
+	"http://www.noblad.no/",
+	"http://www.pd.no/",
+	"http://www.r-a.no/",
+	"http://www.ranablad.no/",
+	"http://www.ringblad.no/",
+	"http://www.ringsaker-blad.no/",
+	"http://www.rha.no/",
+	"http://www.sandeavis.no/",
+	"http://www.smaalenene.no/",
+	"http://www.svelvikposten.no/",
+	"http://www.telen.no/",
+	"http://www.tk.no/",
+	"http://www.tvedestrandsposten.no/",
+	"http://www.vestbyavis.no/",
+	"http://www.aasavis.no/",
+];
 
 /*	Websites with the Amedia DfskinpaywallStyle*/
-var dfSkinPaywall = ["http://www.ba.no/"];
-dfSkinPaywall.push("http://www.dt.no/");
-dfSkinPaywall.push("http://www.ifinnmark.no/");
-dfSkinPaywall.push("http://www.f-b.no/");
-dfSkinPaywall.push("http://www.gjengangeren.no/");
-dfSkinPaywall.push("http://www.glomdalen.no/");
-dfSkinPaywall.push("http://www.ha-halden.no/");
-dfSkinPaywall.push("http://www.h-avis.no/");
-dfSkinPaywall.push("http://www.jarlsbergavis.no/");
-dfSkinPaywall.push("http://www.moss-avis.no/");
-dfSkinPaywall.push("http://www.nordlys.no/");
-dfSkinPaywall.push("http://www.oa.no/");
-dfSkinPaywall.push("http://www.rb.no/");
-dfSkinPaywall.push("http://www.sb.no/");
-dfSkinPaywall.push("http://www.sa.no/");
-dfSkinPaywall.push("http://www.ta.no/");
-dfSkinPaywall.push("http://www.tb.no/");
-dfSkinPaywall.push("http://www.oblad.no/");
-dfSkinPaywall.push("http://www.op.no/");
-dfSkinPaywall.push("http://www.ostlendingen.no/");
+var dfSkinPaywall = [
+	"http://www.ba.no/",
+	"http://www.dt.no/",
+	"http://www.ifinnmark.no/",
+	"http://www.f-b.no/",
+	"http://www.gjengangeren.no/",
+	"http://www.glomdalen.no/",
+	"http://www.ha-halden.no/",
+	"http://www.h-avis.no/",
+	"http://www.jarlsbergavis.no/",
+	"http://www.moss-avis.no/",
+	"http://www.nordlys.no/",
+	"http://www.oa.no/",
+	"http://www.rb.no/",
+	"http://www.sb.no/",
+	"http://www.sa.no/",
+	"http://www.ta.no/",
+	"http://www.tb.no/",
+	"http://www.oblad.no/",
+	"http://www.op.no/",
+	"http://www.ostlendingen.no/",
+];
 //TODO "for abbonnementer" df+skin published? fanaposten closed sunnhordaland special
 var url = document.URL;
 

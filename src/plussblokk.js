@@ -65,12 +65,14 @@ var dfSkinPaywall = [
 ];
 var url = document.URL;
 hits = 0;
-if(isBt() || isAftenbladet() || isFvn()){ 
+if(isBt() || isAftenbladet() || isFvn()){
+	// removes the 'For Abonnementer' section on BT. 
+	if(isBt()){
+		var div = document.getElementsByClassName("df-skin-theme-Perks");
+		addClassToArray(div);
+	} 
 	var divs = document.getElementsByClassName("df-skin-paywall-closed");
-	for(var i = 0; i < divs.length; i++){
-		divs[i].classList.add("blocked");
-		hits++;
-	}
+	addClassToArray(divs);
 } else if(isVg()) {
 	var divs = document.getElementsByClassName("article-extract");
 	for(var i = 0; i < divs.length; i++) {
@@ -101,10 +103,7 @@ if(isBt() || isAftenbladet() || isFvn()){
 	}
 } else if (isAp()) {
 	var divs = document.getElementsByClassName("df-skin-art-Feat-Amagasinet");
-	for(var i = 0; i < divs.length; i++){
-		divs[i].classList.add("blocked");
-		hits++;
-	}
+	addClassToArray(divs);
 } else if (isDn()) {
 	if (url.indexOf("/d2/")) {
 		var articles = document.querySelectorAll("article");
@@ -121,16 +120,10 @@ if(isBt() || isAftenbladet() || isFvn()){
 		}
 	}
 	var divs = document.getElementsByClassName("df-skin-paid");
-	for(var i = 0; i < divs.length; i++){
-		divs[i].classList.add("blocked");
-		hits++;
-	}
+	addClassToArray(divs);
 } else if (isAdressa()) {
 	var divs = document.getElementsByClassName("article payed");
-	for(var i = 0; i < divs.length; i++) {
-		divs[i].classList.add("blocked");
-		hits++;
-	}
+	addClassToArray(divs);
 } else if (isPartOfArticleArray()){
 	var divs = document.getElementsByClassName("am-articleEntry");
 	for(var i = 0; i < divs.length; i++) {
@@ -146,16 +139,24 @@ if(isBt() || isAftenbladet() || isFvn()){
 	}
 } else if (isPartOfDfSkinPaywallArray()){
 	var divs = document.getElementsByClassName("df-skin-paywall");
-	for(var i = 0; i < divs.length; i++){
-		divs[i].classList.add("blocked");
-		hits++;
-	}
+	addClassToArray(divs);
+} else if (isTek()) {
+	var divs = document.getElementsByClassName("access-subscription");
+	addClassToArray(divs);
 }
 
 /*  Checks if an element has a specific class 	*/
 function hasClass(element, cls) {
     return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 }
+/* iterates over an array of divs, and adds the blocked class */
+function addClassToArray(array) {
+	for(var i = 0; i < array.length; i++) {
+		array[i].classList.add("blocked");
+		hits++;
+	}
+}
+
 /* bool functions to increase readability */
 function isVg() { return url.indexOf("vg.no") >= 0;}
 function isAdressa() {return url.indexOf("adressa.no") >= 0;}
@@ -167,6 +168,7 @@ function isDb() {return url.indexOf("dagbladet.no") >= 0;}
 function isDn() {return url.indexOf("dn.no") >= 0;}
 function isPartOfArticleArray() {return articleEntryArray.indexOf(url) >= 0;}
 function isPartOfDfSkinPaywallArray() {return dfSkinPaywall.indexOf(url) >= 0;}
+function isTek() {return url.indexOf("tek.no") >= 0;}
 
 /* Inform background page that this tab should have a page action 
 *  I.e. it is one of the websites we check... 

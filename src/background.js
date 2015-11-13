@@ -35,7 +35,7 @@ function callback(tabs) {
 	chrome.storage.sync.get('paused', function(item){
 
     // Update icon to reflect running/paused status
-    var iconPath = (item.paused ? 'images/blackandwhiteicon-38x38.png' : 'images/blokkpluss-38.png');
+    var iconPath = (item.paused ? 'images/blokkpluss-paused-38.png' : 'images/blokkpluss-38.png');
 		chrome.pageAction.setIcon({tabId: tabs[0].id, path: iconPath});	
 
 	});

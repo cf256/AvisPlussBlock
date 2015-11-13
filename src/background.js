@@ -1,5 +1,4 @@
-var pathToRegularIcon = 'images/blokkpluss-38.png';
-var pathToPausedIcon = 'images/blackandwhiteicon-38x38.png';
+
 // query for current tab
 var query = { active: true, currentWindow: true };
 // Listener for showing pageAction
@@ -32,14 +31,12 @@ chrome.runtime.onInstalled.addListener(function(reason){
 	console.log("[BACKGROUND: INIT]: paused = false");
 });
 
-// changes icon for the pageAction
-// TODO make into one function, passing path into it. 
 function callback(tabs) {
 	chrome.storage.sync.get('paused', function(item){
-		if (item.paused === 'true'){
-			chrome.pageAction.setIcon({tabId: tabs[0].id, path:pathToPausedIcon});
-		}else{
-			chrome.pageAction.setIcon({tabId: tabs[0].id, path:pathToRegularIcon});	
-		}
+
+    // Update icon to reflect running/paused status
+    var iconPath = (item.paused ? 'images/blackandwhiteicon-38x38.png' : 'images/blokkpluss-38.png');
+		chrome.pageAction.setIcon({tabId: tabs[0].id, path: iconPath});	
+
 	});
 }

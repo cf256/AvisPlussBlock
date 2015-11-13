@@ -3,8 +3,21 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 - Ability to remove specific sites from the blocking list
-- Ability to stop running once on current site
-- More sites
+- More sites as needed - swedish even?
+- Make popup go away after a few seconds
+- i18n
+
+
+## [0.5] - 2015-13-11
+### Added
+- tek.no
+- dinside.no
+- Now removes native adverts from dinside and DB.
+- Removes 'For abonnementer' section on BT.no
+- You can now pause the extension.
+
+### Changed
+- bugfix on dn.no/d2
 
 ## [0.4] - 2015-10-11
 ### Changed 

@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <script type="text/javascript" src="popup.js"></script>
+    <link rel="stylesheet" type="text/css" href="remove.css">
   </head>
-  <body>
-    <h3 style="font-weight:bold; text-align:center;">PlussBlokk</h3>
-    <table border="1" cellpadding="3" style="border-collapse:collapse;">
-      <tr>
-        <td nowrap>Antall blokkerte artikler</td>
-        <td align="right"><span id="hits">N/A</span></td>
-      </tr>
-    </table>
+  <body style="width: 200px">
+    <h3>PlussBlokk</h3>
+    <p class="noninteractive">Blokkerte Artikler: <span id="hits">N/A</span></p>
+    <p id="pause" class="interactive">Sett PlussBlokk på pause</p>
   </body>
 </html>

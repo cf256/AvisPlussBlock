@@ -1,11 +1,14 @@
   {
   "name": "PlussBlokk",
   "description": "Fjerner 'Abonnement' og 'Pluss' artikler fra populære nettaviser i Norge",
-  "version": "0.4",
+  "version": "0.5",
   "background": {
     "scripts": ["background.js"],
     "persistent": false
   },
+  "permissions": [
+        "storage"
+    ],
   "content_scripts": [
   {
     "matches": ["*://*.amta.no/*",
@@ -74,7 +77,8 @@
                 "*://*.dn.no/*",
                 "*://*.adressa.no/*",
                 "*://*.aftenposten.no/*",
-                "*://*.tek.no/*"
+                "*://*.tek.no/*",
+                "*://*.dinside.no/*"
               ],
     "js": ["plussblokk.js"],
     "css": ["remove.css"]

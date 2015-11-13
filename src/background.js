@@ -1,5 +1,5 @@
-var pathToRegularIcon = 'blokkpluss-38.png';
-var pathToPausedIcon = 'blackandwhiteicon-38x38.png';
+var pathToRegularIcon = 'images/blokkpluss-38.png';
+var pathToPausedIcon = 'images/blackandwhiteicon-38x38.png';
 // query for current tab
 var query = { active: true, currentWindow: true };
 // Listener for showing pageAction

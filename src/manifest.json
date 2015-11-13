@@ -87,14 +87,14 @@
   "page_action": {
     "default_title": "PlussBlokk",
     "default_icon": {                   
-            "19": "blokkpluss-19.png",           
-            "38": "blokkpluss-38.png"
+            "19": "images/blokkpluss-19.png",           
+            "38": "images/blokkpluss-38.png"
           },
     "default_popup": "popup.html"
   },
   "icons": { 
-          "16": "blokkpluss-16.png",
-          "48": "blokkpluss-48.png",
-          "128": "blokkpluss-128.png" },
+          "16": "images/blokkpluss-16.png",
+          "48": "images/blokkpluss-48.png",
+          "128": "images/blokkpluss-128.png" },
   "manifest_version": 2
 }

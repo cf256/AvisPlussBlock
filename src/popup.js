@@ -37,6 +37,8 @@ window.addEventListener('DOMContentLoaded', function () {
         });
       }
 		});
-		// chrome.storage.sync.set({'paused':'true'});	
+		// chrome.storage.sync.set({'paused':'true'});
+
+		window.close();
 	});
 });

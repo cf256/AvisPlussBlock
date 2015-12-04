@@ -81,7 +81,7 @@
         "*:\/\/*.tk.no\/*",
         "*:\/\/*.tvedestrandsposten.no\/*",
         "*:\/\/*.vestbyavis.no\/*",
-        "*:\/\/*.vg.no\/*",
+        "*:\/\/*.vg.no\/*"
       ],
       "js": [
         "plussblokk.js"

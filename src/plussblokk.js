@@ -108,8 +108,15 @@ chrome.storage.sync.get('paused', function(item) {
             var divs = document.getElementsByClassName("native-advertisement");
             addClassToArray(divs);
         } else if (isAp()) {
-            var divs = document.getElementsByClassName("df-skin-art-Feat-Amagasinet");
-            addClassToArray(divs);
+           ["df-skin-art-Amagasinet-for-abonnenter-nyhet",
+             "df-skin-art-For-abonnenter",
+             "df-skin-art-Sport-paywall-marking",
+             "df-skin-art-Feat-Amagasinet",
+             "non-subscriber-stripe"
+           ].forEach( function(name) {
+             var divs = document.getElementsByClassName(name);
+             addClassToArray(divs);
+           });
         } else if (isDn()) {
             if (url.indexOf("/d2/")) {
                 var articles = document.querySelectorAll("article");

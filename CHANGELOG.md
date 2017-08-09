@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 - Make popup go away after a few seconds
 - i18n
 
+## [0.6] - 2017-08-09
+### Changed
+* Fixed issues with the dfskinpaywall family of sites
+* Remove protocol from array of sites to block
+* move nordlys.no to correct array of sites.
 
 ## [0.5] - 2015-13-11
 ### Added

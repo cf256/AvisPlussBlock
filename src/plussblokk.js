@@ -23,6 +23,7 @@ var articleEntryArray = [
     "lofotposten.no/",
     "noblad.no/",
     "nordhordland.no/",
+    "nordlys.no/",
     "oyene.no/",
     "pd.no/",
     "r-a.no/",
@@ -52,7 +53,6 @@ var dfSkinPaywall = [
     "ifinnmark.no/",
     "jarlsbergavis.no/",
     "moss-avis.no/",
-    "nordlys.no/",
     "oa.no/",
     "oblad.no/",
     "op.no/",
@@ -206,11 +206,15 @@ function isDn() {
 }
 
 function isPartOfArticleArray() {
-    return articleEntryArray.filter((site) => url.indexOf(site) >= 0).length;
+    return articleEntryArray.filter(function(site) {
+       return url.indexOf(site) >= 0;
+    }).length;
 }
 
 function isPartOfDfSkinPaywallArray() {
-    return dfSkinPaywall.filter((site) => url.indexOf(site) >= 0).length;
+    return dfSkinPaywall.filter(function(site) {
+       return url.indexOf(site) >= 0;
+    }).length;
 }
 
 function isTek() {

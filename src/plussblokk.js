@@ -1,72 +1,72 @@
 // Websites with the Amedia Am Style
 var articleEntryArray = [
-    "http://www.aasavis.no/",
-    "http://www.amta.no/",
-    "http://www.an.no/",
-    "http://www.auraavis.no/",
-    "http://www.austagderblad.no/",
-    "http://www.bygdeposten.no/",
-    "http://www.eikerbladet.no/",
-    "http://www.enebakkavis.no/",
-    "http://www.firda.no/",
-    "http://www.firdaposten.no/",
-    "http://www.fremover.no/",
-    "http://www.hadeland.no/",
-    "http://www.hardanger-folkeblad.no/",
-    "http://www.helg.no/",
-    "http://www.indre.no/",
-    "http://www.kv.no/",
-    "http://www.kvinnheringen.no/",
-    "http://www.laagendalsposten.no/",
-    "http://www.lierposten.no/",
-    "http://www.lofot-tidende.no/",
-    "http://www.lofotposten.no/",
-    "http://www.noblad.no/",
-    "http://www.nordhordland.no/",
-    "http://www.oyene.no/",
-    "http://www.pd.no/",
-    "http://www.r-a.no/",
-    "http://www.ranablad.no/",
-    "http://www.retten.no/",
-    "http://www.rha.no/",
-    "http://www.ringblad.no/",
-    "http://www.ringsaker-blad.no/",
-    "http://www.sandeavis.no/",
-    "http://www.smaalenene.no/",
-    "http://www.svelvikposten.no/",
-    "http://www.telen.no/",
-    "http://www.tk.no/",
-    "http://www.tvedestrandsposten.no/",
-    "http://www.vestbyavis.no/",
+    "aasavis.no/",
+    "amta.no/",
+    "an.no/",
+    "auraavis.no/",
+    "austagderblad.no/",
+    "bygdeposten.no/",
+    "eikerbladet.no/",
+    "enebakkavis.no/",
+    "firda.no/",
+    "firdaposten.no/",
+    "fremover.no/",
+    "hadeland.no/",
+    "hardanger-folkeblad.no/",
+    "helg.no/",
+    "indre.no/",
+    "kv.no/",
+    "kvinnheringen.no/",
+    "laagendalsposten.no/",
+    "lierposten.no/",
+    "lofot-tidende.no/",
+    "lofotposten.no/",
+    "noblad.no/",
+    "nordhordland.no/",
+    "oyene.no/",
+    "pd.no/",
+    "r-a.no/",
+    "ranablad.no/",
+    "retten.no/",
+    "rha.no/",
+    "ringblad.no/",
+    "ringsaker-blad.no/",
+    "sandeavis.no/",
+    "smaalenene.no/",
+    "svelvikposten.no/",
+    "telen.no/",
+    "tk.no/",
+    "tvedestrandsposten.no/",
+    "vestbyavis.no/",
 ];
 
 // Websites with the Amedia DfskinpaywallStyle
 var dfSkinPaywall = [
-    "http://www.ba.no/",
-    "http://www.dt.no/",
-    "http://www.f-b.no/",
-    "http://www.gjengangeren.no/",
-    "http://www.glomdalen.no/",
-    "http://www.h-avis.no/",
-    "http://www.ha-halden.no/",
-    "http://www.ifinnmark.no/",
-    "http://www.jarlsbergavis.no/",
-    "http://www.moss-avis.no/",
-    "http://www.nordlys.no/",
-    "http://www.oa.no/",
-    "http://www.oblad.no/",
-    "http://www.op.no/",
-    "http://www.ostlendingen.no/",
-    "http://www.rb.no/",
-    "http://www.sa.no/",
-    "http://www.sb.no/",
-    "http://www.ta.no/",
-    "http://www.tb.no/",
+    "ba.no/",
+    "dt.no/",
+    "f-b.no/",
+    "gjengangeren.no/",
+    "glomdalen.no/",
+    "h-avis.no/",
+    "ha-halden.no/",
+    "ifinnmark.no/",
+    "jarlsbergavis.no/",
+    "moss-avis.no/",
+    "nordlys.no/",
+    "oa.no/",
+    "oblad.no/",
+    "op.no/",
+    "ostlendingen.no/",
+    "rb.no/",
+    "sa.no/",
+    "sb.no/",
+    "ta.no/",
+    "tb.no/",
 ];
 var url = document.URL;
 hits = 0;
 // Check if paused
-chrome.storage.sync.get('paused', function(item) {
+chrome.storage.sync.get('paused', function (item) {
     if (item.paused === 'false') {
         if (isBt() || isAftenbladet() || isFvn()) {
             // Removes the 'For Abonnementer' section on BT. 
@@ -108,15 +108,15 @@ chrome.storage.sync.get('paused', function(item) {
             var divs = document.getElementsByClassName("native-advertisement");
             addClassToArray(divs);
         } else if (isAp()) {
-           ["df-skin-art-Amagasinet-for-abonnenter-nyhet",
-             "df-skin-art-For-abonnenter",
-             "df-skin-art-Sport-paywall-marking",
-             "df-skin-art-Feat-Amagasinet",
-             "non-subscriber-stripe"
-           ].forEach( function(name) {
-             var divs = document.getElementsByClassName(name);
-             addClassToArray(divs);
-           });
+            ["df-skin-art-Amagasinet-for-abonnenter-nyhet",
+                "df-skin-art-For-abonnenter",
+                "df-skin-art-Sport-paywall-marking",
+                "df-skin-art-Feat-Amagasinet",
+                "non-subscriber-stripe"
+            ].forEach(function (name) {
+                var divs = document.getElementsByClassName(name);
+                addClassToArray(divs);
+            });
         } else if (isDn()) {
             if (url.indexOf("/d2/")) {
                 var articles = document.querySelectorAll("article");
@@ -139,12 +139,10 @@ chrome.storage.sync.get('paused', function(item) {
             var divs = document.getElementsByClassName("am-articleEntry");
             for (var i = 0; i < divs.length; i++) {
                 if (divs[i].hasChildNodes()) {
-                    var spans = divs[i].querySelectorAll("span");
-                    for (var j = 0; j < spans.length; j++) {
-                        if (spans[j].classList.contains("am-premium-logo")) {
-                            divs[i].classList.add("blocked");
-                            hits++;
-                        }
+                    var premiumLogos = divs[i].getElementsByClassName("am-premium-logo");
+                    if (premiumLogos.length) {
+                        divs[i].classList.add("blocked");
+                        hits++;
                     }
                 }
             }
@@ -208,11 +206,11 @@ function isDn() {
 }
 
 function isPartOfArticleArray() {
-    return articleEntryArray.indexOf(url) >= 0;
+    return articleEntryArray.filter((site) => url.indexOf(site) >= 0).length;
 }
 
 function isPartOfDfSkinPaywallArray() {
-    return dfSkinPaywall.indexOf(url) >= 0;
+    return dfSkinPaywall.filter((site) => url.indexOf(site) >= 0).length;
 }
 
 function isTek() {
@@ -231,7 +229,7 @@ chrome.runtime.sendMessage({
 });
 
 // Listen for messages from the popup
-chrome.runtime.onMessage.addListener(function(msg, sender, response) {
+chrome.runtime.onMessage.addListener(function (msg, sender, response) {
     // First, validate the message's structure
     if ((msg.from === 'popup') && (msg.subject === 'HitsInfo')) {
         var res = {

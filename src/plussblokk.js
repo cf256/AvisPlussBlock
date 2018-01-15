@@ -77,20 +77,33 @@ chrome.storage.sync.get('paused', function (item) {
             var divs = document.getElementsByClassName("df-skin-paywall-closed");
             addClassToArray(divs);
         } else if (isVg()) {
-            var divs = document.getElementsByClassName("article-extract");
-            for (var i = 0; i < divs.length; i++) {
-                if (divs[i].hasChildNodes()) {
-                    var spans = divs[i].querySelectorAll("span");
+            var lockedDivs = document.getElementsByClassName("df-container-locked")
+            
+
+
+            for (var i = 0; i < lockedDivs.length; i++) {
+                lockedDivs[i].classList.add("blocked")
+                hits++
+            }
+                
+            var divsWithSkinPluss = document.getElementsByClassName("article-extract");
+    
+            for (var i = 0; i < divsWithSkinPluss.length; i++) {
+                if (divsWithSkinPluss[i].hasChildNodes()) {
+                    var spans = divsWithSkinPluss[i].querySelectorAll("span");
                     for (var j = 0; j < spans.length; j++) {
                         if (spans[j].classList.contains("df-img-skin-pluss")) {
-                            divs[i].classList.add("blocked");
-                            hits++;
+                            if (!hasClass(divsWithSkinPluss[i], "blocked")) {
+                                divsWithSkinPluss[i].classList.add("blocked");
+                                hits++;
+                            }
                         }
                     }
                 }
             }
+
             var vgPlussTeaser = document.getElementById("pluss-teaser");
-            vgPlussTeaser.classList.add("blocked");
+            vgPlussTeaser && vgPlussTeaser.classList.add("blocked");
             hits++;
         } else if (isDb()) {
             var articles = document.getElementsByClassName("preview");

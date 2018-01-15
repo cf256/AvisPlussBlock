@@ -1,7 +1,7 @@
 {
   "name": "PlussBlokk",
   "description": "Fjerner 'Abonnement' og 'Pluss' artikler fra popul\u00e6re nettaviser i Norge",
-  "version": "0.6",
+  "version": "0.7",
   "background": {
     "scripts": [
       "background.js"

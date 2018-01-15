@@ -1,4 +1,4 @@
-#PlussBlokk
+# PlussBlokk
 Chrome Extension that hides premium articles from online Norwegian newspapers. 
 
 ##### Pausing the extension

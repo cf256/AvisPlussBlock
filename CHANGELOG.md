@@ -7,6 +7,15 @@ All notable changes to this project will be documented in this file.
 - Make popup go away after a few seconds
 - i18n
 
+## [0.7] - 2018-15-01
+### Changes
+* Fixed https://github.com/cf256/AvisPlussBlock/issues/13
+
+### Changed
+* Fixed issues with the dfskinpaywall family of sites
+* Remove protocol from array of sites to block
+* move nordlys.no to correct array of sites.
+
 ## [0.6] - 2017-08-09
 ### Changed
 * Fixed issues with the dfskinpaywall family of sites
